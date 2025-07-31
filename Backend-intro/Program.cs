@@ -36,6 +36,7 @@ Console.WriteLine(incremental);*/
 
 
 
+/*
 Console.WriteLine(GetComposition(45, "Hello"));
 Console.WriteLine(GetComposition(23, "Good"));
 Console.WriteLine(GetComposition(34, "Idea"));
@@ -81,7 +82,38 @@ string PrototypeSolution()
 {
     
     return "Prototype";
+}*/
+
+string text = "Horse";
+int x = 3;
+
+if (x == 3)
+{
+    Console.WriteLine("x is 3");
 }
+else if ( x > 2)
+{
+    Console.WriteLine("x is greater than 2");
+}
+else
+{
+    Console.WriteLine("No condition met");
+}
+
+Console.WriteLine("Press Enter key to continue");
+string inputValue = Console.ReadLine();
+Console.WriteLine(inputValue.EndsWith("know"));
+
+
+if (x == 3)
+{
+    Console.WriteLine("x is 3");
+}
+if (x > 2)
+{
+    Console.WriteLine("x is greater than 2");
+}
+
 
 
 
