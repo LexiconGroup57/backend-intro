@@ -84,6 +84,7 @@ string PrototypeSolution()
     return "Prototype";
 }*/
 
+/*
 string text = "Horse";
 int x = 3;
 
@@ -112,9 +113,34 @@ if (x == 3)
 if (x > 2)
 {
     Console.WriteLine("x is greater than 2");
+}*/
+
+int newNumber = 10;
+
+string newText = newNumber.ToString();
+string numberToParse = "10";
+
+int parsedNumber = int.Parse(numberToParse);
+
+if(int.TryParse(numberToParse, out int anotherNumber)){
+    Console.WriteLine(anotherNumber * 45);
+}
+else
+{
+    Console.WriteLine("Not a number");   
 }
 
 
+decimal foo = 12.4M;
+
+string userEntry = Console.ReadLine();
+
+double parsedDouble = double.Parse(userEntry);
+decimal parsedDecimal = decimal.Parse(userEntry);
+
+Console.WriteLine(parsedDouble * 45);
+
+// Console.WriteLine(parsedNumber  * 45);
 
 
 
