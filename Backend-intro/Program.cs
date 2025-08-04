@@ -115,6 +115,8 @@ if (x > 2)
     Console.WriteLine("x is greater than 2");
 }*/
 
+
+/*
 int newNumber = 10;
 
 string newText = newNumber.ToString();
@@ -141,6 +143,138 @@ decimal parsedDecimal = decimal.Parse(userEntry);
 Console.WriteLine(parsedDouble * 45);
 
 // Console.WriteLine(parsedNumber  * 45);
+*/
+
+// Pause the execution
+
+Console.WriteLine("Enter a key to continue");
+Console.ReadKey();
+
+Console.Clear();
+
+Console.WriteLine("Hello, World!");
+
+bool appRunning = true;
+
+while (appRunning)
+{
+// Menu option
+    Console.WriteLine("A for good");
+    Console.WriteLine("B for bad");
+    Console.WriteLine();
+    Console.WriteLine("Enter a choice");
+    ConsoleKeyInfo userInput = Console.ReadKey();
+
+    Console.WriteLine(userInput.Key);
+
+    char keyPressed = userInput.KeyChar;
+
+    int taxRate = 0;
+    switch (keyPressed)
+    {
+        case 'A' or 'a':
+            Console.WriteLine("Good");
+            taxRate = 11;
+            MethodOne();
+            break;
+        case 'B' or 'b':
+            Console.WriteLine("Bad");
+            taxRate = 6;
+            MethodTwo();
+            break;
+        case 'C' or 'c':
+            Console.WriteLine("Bad");
+            taxRate = 25;
+            MethodThree();
+            break;
+        case 'D' or 'd':
+            Console.WriteLine("Bad");
+            continue;
+        case 'X' or 'x':
+            Console.WriteLine("Exit");
+            appRunning = false;
+            continue;
+        default:
+            Console.WriteLine("Invalid choice");
+            break;
+    }
+
+    Console.WriteLine(taxRate);
+
+
+    void MethodOne()
+    {
+
+    }
+
+    void MethodTwo()
+    {
+
+    }
+
+    void MethodThree()
+    {
+
+    }
+
+
+
+    if (keyPressed == 'A' || keyPressed == 'a')
+    {
+        Console.WriteLine("Good");
+    }
+    else if (keyPressed == 'B' || keyPressed == 'b')
+    {
+        Console.WriteLine("Bad");
+    }
+    else
+    {
+        Console.WriteLine("Invalid choice");
+    }
+}
+
+
+
+bool running = true;
+while (running)
+{
+    Console.WriteLine("Still running");
+    ConsoleKeyInfo choice = Console.ReadKey();
+    if (choice.KeyChar == 'x')
+    {
+        running = false;
+    }
+}
+
+running = true;
+
+do
+{
+    Console.WriteLine("Still running");
+    ConsoleKeyInfo choice = Console.ReadKey();
+    if (choice.KeyChar == 'x')
+    {
+        running = false;
+    }
+} while (running);
+
+
+int number;
+bool isNotNumber = true;
+while (isNotNumber)
+{
+    Console.WriteLine("Enter a number");
+    string userInput = Console.ReadLine();
+    if (int.TryParse(userInput, out number))
+    {
+        isNotNumber = false;
+    }
+    else
+    {
+        Console.WriteLine("Not a number");
+    }
+}
+
 
 
 
