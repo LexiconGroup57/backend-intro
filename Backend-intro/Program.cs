@@ -1,21 +1,24 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // 
-/*Console.WriteLine("Hello, World!");             // Intro line?
 
-Console.Clear();
-Console.Write("25 + ");
-Console.Write("10 = ");
-Console.WriteLine(35);
-Console.WriteLine("A new line");
-int interestRate = 5;
+using Backend_intro;
 
-int result = interestRate * 12;*/
+Presentation.WriteLineDemo();
+Presentation demo = new Presentation();
+demo.EvaluationDemo();
 
-/*int x = 23;
-int prognosis = x + 4;
-int actual = 34 - 4 + 0;
+Person kjetil = new Person();
+Person anna = new Person();
+Person pete = new Person();
 
-Console.WriteLine(!(prognosis > actual));*/
+if(String.Equals("foo", "high")) Console.WriteLine("Hello");
+string newText = "Hello";
+int length = newText.Length;
+bool equals = newText.Equals("foo");
+
+Person.GetAge(2002);
+
+Hammer hammerBrand = new Hammer();
 
 /*Console.WriteLine(45 != 34 ? "red" : "yellow");
 
