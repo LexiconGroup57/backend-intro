@@ -3,6 +3,41 @@
 
 using Backend_intro;
 
+string[] texts = { "Hello", "World" };
+int[] numbers = new int[3];
+
+numbers[1] = 23;
+numbers[0] = 46;
+numbers[2] = 69;
+
+
+Console.WriteLine(texts[0]);  // Hello?
+
+double[] newNumbers = new double[28];  
+
+Console.WriteLine(newNumbers.Length);
+
+Console.ReadLine();
+
+int itemsRemoved = 6;
+int upperBound = newNumbers.Length - itemsRemoved;
+
+for (int i = 0; i < newNumbers.Length; i++)
+{
+    newNumbers[i] = 0.3566 + i;
+}
+
+for (int i = 0; i < upperBound; i++)
+{
+    Console.Write(newNumbers[i] + " ");  
+}
+
+Console.WriteLine();
+
+Console.WriteLine(newNumbers[27]);
+
+Console.ReadLine();
+
 Presentation.WriteLineDemo();
 Presentation demo = new Presentation();
 demo.EvaluationDemo();
