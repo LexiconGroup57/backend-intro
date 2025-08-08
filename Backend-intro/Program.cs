@@ -3,6 +3,32 @@
 
 using Backend_intro;
 
+string textValue = "Returns a value indicating whether a specified character occurs within this string.";
+
+string[] anotherArray = textValue.Split(' ');
+string CsvList = String.Join(",", anotherArray); 
+
+string[] words = textValue.Split("whether a specified ");
+bool isCharacter = words[1].Contains("occurs");
+
+int startsAt = words[1].IndexOf("occurs");
+int endsAt = startsAt + "occurs".Length - 1;
+string lastWord = words[1];
+char letterAtEnd = lastWord[endsAt];
+
+
+Char letterToWrite = textValue[0]; 
+int valueToWrite = textValue.Length;
+
+for (int i = 0; i < words.Length; i++)
+{
+    Console.WriteLine(words[i]); 
+}
+if(isCharacter) Console.WriteLine(CsvList);
+
+Console.ReadLine();
+
+
 string[] texts = { "Hello", "World" };
 int[] numbers = new int[3];
 
