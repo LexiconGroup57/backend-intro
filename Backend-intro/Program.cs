@@ -3,6 +3,36 @@
 
 using Backend_intro;
 
+Random chanceObject = new Random();
+double rand = chanceObject.NextSingle();
+int randInt = chanceObject.Next(20, 100);
+
+
+Console.WriteLine(rand);
+
+Console.ReadLine();
+
+string[] names = { "Kjetil", "Anna", "Pete" };
+
+List<string> namesList = new List<string>();
+namesList.Add("Kjetil");
+bool nameWasInList = namesList.Remove("Anna");
+
+Console.WriteLine(nameWasInList);
+
+Console.ReadLine();
+
+Person employee = new Person();
+
+employee.Name = "Kjetil";
+string name = employee.Name;
+employee.Name = "Anna";
+employee.Mood = "Sad";
+
+Console.WriteLine(name);
+
+Console.ReadLine();
+
 string textValue = "Returns a value indicating whether a specified character occurs within this string.";
 
 string[] anotherArray = textValue.Split(' ');
