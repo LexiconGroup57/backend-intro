@@ -3,6 +3,46 @@
 
 using Backend_intro;
 
+
+using (StreamWriter writer = new StreamWriter("FileAdress.txt"))
+{
+    writer.WriteLine("This line is for testing");
+}
+
+try
+{
+    using StreamReader reader = new StreamReader("FileAdress.txt");
+
+    string result = reader.ReadToEnd();
+
+    Console.WriteLine(result);
+}
+catch (IOException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+Console.ReadLine();
+
+int division = 2;
+
+
+try
+{
+    division = Hammer.ReturnNumber(0);
+}
+catch (DivideByZeroException ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine(ex.StackTrace);
+    Console.WriteLine(ex.Source);
+}
+
+Console.WriteLine(division);
+
+Console.ReadLine();
+
+
 Random chanceObject = new Random();
 double rand = chanceObject.NextSingle();
 int randInt = chanceObject.Next(20, 100);
