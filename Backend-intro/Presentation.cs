@@ -25,4 +25,11 @@ public class Presentation
 
         Console.WriteLine(!(prognosis > actual));
     }
+
+    public bool PureEvaluation(int x)
+    {
+        int prognosis = x + 4;
+        int actual = 34 - 4 + 0;
+        return prognosis > actual;
+    }
 }
