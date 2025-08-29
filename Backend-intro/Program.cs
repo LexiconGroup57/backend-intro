@@ -3,6 +3,43 @@
 
 using Backend_intro;
 
+Address address = new Address();
+Event newEvent = new Event("ff", "ee");
+Char newChar = 'a';
+List<IComparable> list = new List<IComparable>();
+list.Add(newEvent);
+list.Add(newChar);
+list.Add(address);
+
+
+HomeInsurance homeInsurance = new HomeInsurance();
+
+CarInsurance carInsurance = new CarInsurance();
+
+List<Insurance> insurances = new List<Insurance>();
+insurances.Add(homeInsurance);
+insurances.Add(carInsurance);
+decimal value = 0;
+int e = 1;
+if (insurances[e] is CarInsurance)
+{
+    value = (insurances[e] as CarInsurance).AccidentClaim();
+    // value = insurances[e].AccidentClaim();
+}
+
+
+Console.WriteLine(value);
+
+Console.ReadLine();
+
+Impact impact = new Impact(34, 99);
+int x = impact.CoordinateX;
+
+//impact.CoordinateX = 23;
+// code
+// impact.CoordinateY = 45;
+impact.ChangeCoordinates(23, 45);
+
 
 using (StreamWriter writer = new StreamWriter("FileAdress.txt"))
 {
