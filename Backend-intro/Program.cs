@@ -3,6 +3,44 @@
 
 using Backend_intro;
 
+string snippet =
+    "This type parameter is covariant. That is, you can use either the type you specified or any type that is more derived. For more information about covariance and contravariance, see Covariance and Contravariance in Generics.";
+string[] wordsFromSnippet = snippet.Split(' ');
+
+List<string> newWords = wordsFromSnippet
+    .Where(word => word.Length > 6)
+    .Select(word => word + " is longer than six letters")
+    .Select(word => word.ToUpper())
+    .ToList();
+
+List<Person> people = new List<Person>();
+List<int> newPeople = people
+    .Where(person => person.Age > 20)
+    .Select(person => person.Age)
+    .ToList();
+
+// string resultant = LastMethod(NextToLast(FirstMethod("Goo")));
+
+List<Person> peopleList = new List<Person>();
+
+foreach (Person person in people)
+{
+    if (person.Age > 20) peopleList.Add(person);
+}
+
+
+foreach (string word in newWords)
+{
+    Console.WriteLine(word);
+}
+
+
+Console.ReadLine();
+
+
+
+
+
 Address address = new Address();
 Event newEvent = new Event("ff", "ee");
 Char newChar = 'a';
