@@ -3,6 +3,53 @@
 
 using Backend_intro;
 
+List<string> someWordsToo = new List<string>() { "Ball", "Apple", "Coffin", "Apple"};
+List<string> someWordsMoreToo = new List<string>() { "Fruit", "Orange", "Coffin"};
+
+List<string> concatWords = someWordsToo.Concat(someWordsMoreToo).ToList();
+List<string> exceptWords = someWordsToo.Except(someWordsMoreToo).ToList();
+List<string> intersectWords = someWordsToo.Intersect(someWordsMoreToo).ToList();
+List<string> unionWords = someWordsToo.Union(someWordsMoreToo).ToList();
+
+foreach (string word in unionWords)
+{
+    Console.Write(word + ", ");
+}
+
+Console.ReadLine();
+
+
+
+List<string> someWords = new List<string>() { "Ball", "Apple", "Coffin", "Apple"};
+List<string> someWordsMore = new List<string>() { "Fruit", "Orange", "Coffin"};
+
+someWordsMore.Reverse();
+
+List<string> distinctWords = someWords.Distinct().ToList();
+List<string> orderedWords = someWords.Order().ToList();
+
+
+foreach (string word in someWordsMore)
+{
+    Console.Write(word + ", ");
+}
+
+Console.ReadLine();
+
+List<int> numbersLinq = new List<int>() { 4 , 7 , 2 , 1 , 6 , 3 , 5 };
+
+int sumLinq = numbersLinq.Sum();
+double averageLinq = numbersLinq.Average();
+int maxLinq = numbersLinq.Max();
+
+Console.WriteLine(sumLinq);
+Console.WriteLine(averageLinq);
+Console.WriteLine(maxLinq);
+
+Console.ReadLine();
+
+
+
 string snippet =
     "This type parameter is covariant. That is, you can use either the type you specified or any type that is more derived. For more information about covariance and contravariance, see Covariance and Contravariance in Generics.";
 string[] wordsFromSnippet = snippet.Split(' ');
