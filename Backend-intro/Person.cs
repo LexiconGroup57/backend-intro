@@ -33,6 +33,7 @@ public class Person
  
     public static int GetAge(int yearBorn )
     {
+        Console.WriteLine("Debugging purpose: " + yearBorn);
         return 2025 - yearBorn;
     }
 }

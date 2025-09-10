@@ -3,6 +3,45 @@
 
 using Backend_intro;
 
+int age = Person.GetAge(2002);
+
+Console.WriteLine(age);
+
+Console.ReadLine();
+
+int RespondToText(string text, bool option) => (text, option) switch
+{
+    (_, true) when text.Length > 6 => 40,
+    ("Hello", true) => 1,
+    ("Hi", true) when text.Contains('e') => 2,
+    ("Good", false) => 3,
+    ("Hi there", _) => 4,
+    ("Hi there!", true) => 5,
+    (_,_) => 0
+};
+
+Console.WriteLine(RespondToText("Hi", true));
+
+Console.ReadLine();
+
+string operatorKey = "/";
+
+int newNumber = operatorKey == "/" ? 100 : 200;
+
+decimal number1 = 100;
+decimal number2 = 200;
+
+decimal resultValue = (operatorKey, number2) switch
+{
+    ("/", 0) => throw new DivideByZeroException(),
+    ("/", _) => number1 / number2,
+    ("*", _) => number1 *  number2,
+    ("+", _) => number1 +  number2,
+    ("-", _) => number1 -  number2,
+    _ => 0
+};
+
+
 List<string> someWordsToo = new List<string>() { "Ball", "Apple", "Coffin", "Apple"};
 List<string> someWordsMoreToo = new List<string>() { "Fruit", "Orange", "Coffin"};
 
@@ -23,8 +62,11 @@ Console.ReadLine();
 List<string> someWords = new List<string>() { "Ball", "Apple", "Coffin", "Apple"};
 List<string> someWordsMore = new List<string>() { "Fruit", "Orange", "Coffin"};
 
-someWordsMore.Reverse();
+string[] someWords2 = [ "Ball", "Apple", "Coffin", "Apple"];
 
+someWordsMore.Reverse();
+string[] reverseWords = someWords2.Reverse().ToArray();
+List<string> reverseWords2 = someWords.AsEnumerable().Reverse().ToList();
 List<string> distinctWords = someWords.Distinct().ToList();
 List<string> orderedWords = someWords.Order().ToList();
 
