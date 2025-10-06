@@ -2,6 +2,7 @@ using API;
 using API.repos;
 using API.services;
 using Backend_intro;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
@@ -9,8 +10,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin();
+        policy.AllowAnyHeader();
     });
 });
+builder.Services.AddDbContext<BackendContext>(options => 
+    options.UseSqlite("DataSource=backend.db"));
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -26,11 +30,17 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors("AllowAll");
 app.MapControllers();
+
+app.MapGet("/api/persons", (BackendContext context) =>
+{
+    return context.Persons.ToArray();
+});
+
 app.MapGet("/", () => "Hello World!");
 
 app.MapGet("/api/values", () => new[] { "value1", "value2" });
 app.MapGet("/about", () => "About");
-app.MapGet("/contact", () => "Contact");
+app.MapGet("/contact", () => "Contacts are good");
 app.MapGet("/products/{category}", (string category) => "Product is of category: " + category);
 app.MapGet("/products/{category}/{id}", (string category, int id) => "Product is of category: " + category + " and id: " + id);
 app.MapGet("/{random}", (string random) => "This page doesn't exist");
@@ -52,6 +62,6 @@ app.MapPost("/api/call", (DateTime start, DateTime end) =>
 app.MapPost("/api/values", (string value) => "Got a value: " + value);
 app.MapPost("/home", (HomeViewModel homeViewModel) =>
 {
-    return homeViewModel.Description;
+    return homeViewModel;
 });
 app.Run();
