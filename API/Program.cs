@@ -4,6 +4,7 @@ using API.services;
 using Backend_intro;
 using Microsoft.EntityFrameworkCore;
 
+//DotNetEnv.Env.Load();
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
@@ -13,8 +14,9 @@ builder.Services.AddCors(options =>
         policy.AllowAnyHeader();
     });
 });
+// builder.Configuration.GetConnectionString("DefaultConnection")
 builder.Services.AddDbContext<BackendContext>(options => 
-    options.UseSqlite("DataSource=backend.db"));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -33,7 +35,21 @@ app.MapControllers();
 
 app.MapGet("/api/persons", (BackendContext context) =>
 {
-    return context.Persons.ToArray();
+    return context.Persons
+        .Include(p => p.Address)
+        .ToList();
+});
+app.MapGet("/api/persons/{id}", (int id, BackendContext context) =>
+{
+    return context.Persons
+        .Include(p => p.Address)
+        .FirstOrDefault(p => p.Id == id);
+});
+app.MapPost("/api/persons", (Person person, BackendContext context) =>
+{
+    var newPerson = context.Persons.Add(person);
+    context.SaveChanges(); 
+    return newPerson;
 });
 
 app.MapGet("/", () => "Hello World!");
