@@ -2,6 +2,7 @@ using API;
 using API.repos;
 using API.services;
 using Backend_intro;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 //DotNetEnv.Env.Load();
@@ -14,7 +15,6 @@ builder.Services.AddCors(options =>
         policy.AllowAnyHeader();
     });
 });
-// builder.Configuration.GetConnectionString("DefaultConnection")
 builder.Services.AddDbContext<BackendContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddOpenApi();
@@ -45,11 +45,17 @@ app.MapGet("/api/persons/{id}", (int id, BackendContext context) =>
         .Include(p => p.Address)
         .FirstOrDefault(p => p.Id == id);
 });
-app.MapPost("/api/persons", (Person person, BackendContext context) =>
+app.MapPost("/api/persons", ([FromBody]PersonDto person, [FromServices]BackendContext context) =>
 {
-    var newPerson = context.Persons.Add(person);
+    Address address = context.Addresses.FirstOrDefault(a => a.City == person.City);
+    if (address == null)
+    {
+        address = new Address(person.City);
+        context.Addresses.Add(address);
+    }
+    var newPerson = context.Persons.Add(new Person(person.Name, person.Age, person.Mood, address));
     context.SaveChanges(); 
-    return newPerson;
+    return "worked";
 });
 
 app.MapGet("/", () => "Hello World!");

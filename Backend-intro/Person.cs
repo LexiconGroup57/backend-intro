@@ -32,6 +32,14 @@ public class Person
         Age = age;
     }
  
+    public Person(string name, int age, string mood, Address address)
+    {
+        Name = name;
+        Age = age;
+        Mood = mood;
+        Address = address;
+    }
+    
     public static int GetAge(int yearBorn )
     {
         Console.WriteLine("Debugging purpose: " + yearBorn);
